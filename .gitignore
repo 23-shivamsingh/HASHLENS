@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+# Dependencies and build output
+node_modules/
+dist/
+.coverage
+*.log
+# Do not accidentally commit potentially sensitive test inputs
+hashes.txt
+input-*.txt
+results-*.json

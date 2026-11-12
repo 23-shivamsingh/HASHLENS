@@ -1,0 +1,842 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="author" content="Shivam Singh">
+  <meta name="theme-color" content="#080f1c">
+  <meta name="description" content="HASHLENS — a private, browser-based hash signature identification lab. Identify candidate hash formats by prefix, length and character set.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HASHLENS — Hash Intelligence Lab">
+  <meta property="og:description" content="Know the signature. Understand the signal. Private hash format analysis, directly in your browser.">
+  <meta property="og:image" content="assets/og-image.png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <title>HASHLENS — Hash Intelligence Lab</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+      <a class="brand" href="#analyzer" aria-label="HASHLENS home">
+        <span class="brand-icon">
+          <img src="assets/mark.svg" width="37" height="37" alt="">
+        </span>
+        <span class="brand-words">
+          <strong>HASH<span>LENS</span></strong>
+          <small>INTELLIGENCE LAB / 01</small>
+        </span>
+      </a>
+
+      <div class="nav-block">
+        <div class="nav-heading">WORKSPACE</div>
+
+        <nav aria-label="Main navigation">
+
+          <a href="#analyzer" class="nav-link active" data-view-link="analyzer">
+            <svg viewBox="0 0 24 24">
+              <path d="m8 3-5 5 5 5M16 3l5 5-5 5M14 2l-4 12M4 19h16"/>
+            </svg>
+            <span>Analyzer</span>
+            <span class="nav-shortcut">01</span>
+          </a>
+
+          <a href="#library" class="nav-link" data-view-link="library">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M8 3v18M8 9h13M8 15h13"/>
+            </svg>
+            <span>Signature library</span>
+            <span class="nav-shortcut">02</span>
+          </a>
+
+          <a href="#guide" class="nav-link" data-view-link="guide">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 11v6M12 7h.01"/>
+            </svg>
+            <span>How it works</span>
+            <span class="nav-shortcut">03</span>
+          </a>
+
+        </nav>
+      </div>
+
+      <div class="sidebar-spacer"></div>
+
+      <div class="sidebar-note">
+        <span class="icon-shield">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </span>
+        <div>
+          <strong>Local by design.</strong>
+          <p>Your input never leaves this browser. No login, API or telemetry.</p>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <span>OPEN SOURCE / AGPL-3.0</span>
+        <span class="dot"></span>
+        <span>v1.0.0</span>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-column">
+
+      <!-- TOP NAVBAR - SOURCE PROJECT REMOVED -->
+      <header class="topbar">
+
+        <div class="crumb">
+          <button
+            class="icon-button menu-button"
+            id="menuToggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+          >
+            <svg viewBox="0 0 24 24">
+              <path d="M4 7h16M4 12h16M4 17h16"/>
+            </svg>
+          </button>
+
+          <span class="crumb-muted">WORKSPACE</span>
+          <span class="crumb-slash">/</span>
+          <span id="currentCrumb">ANALYZER</span>
+        </div>
+
+        <!-- ONLY LOCAL ANALYSIS BADGE -->
+        <div class="top-actions">
+          <span class="privacy-pill">
+            <span class="live-dot"></span>
+            100% LOCAL ANALYSIS
+          </span>
+        </div>
+
+      </header>
+
+      <main id="main">
+
+        <!-- ANALYZER VIEW -->
+        <section
+          class="view"
+          id="view-analyzer"
+          data-view="analyzer"
+        >
+
+          <div class="intro-grid">
+
+            <div class="eyebrow">
+              <span class="eyebrow-line"></span>
+              HASH SIGNATURE INTELLIGENCE
+              <span class="small-seq">— 001</span>
+            </div>
+
+            <h1>
+              Every hash leaves<br>
+              <span>a <em>fingerprint.</em></span>
+            </h1>
+
+            <p class="intro-copy">
+              Identify probable hash algorithms from their structure,
+              not guesswork. Paste a signature. Get ranked candidates
+              and the evidence behind them.
+            </p>
+
+            <div class="intro-decor" aria-hidden="true">
+              <div class="orb-orbit orb-orbit-one"></div>
+              <div class="orb-orbit orb-orbit-two"></div>
+
+              <div class="orb-center">
+                <img src="assets/mark.svg" alt="">
+              </div>
+
+              <span class="orbit-label label-one">0xA4F2</span>
+              <span class="orbit-label label-two">SHA:256</span>
+              <span class="orbit-node orbit-node-one"></span>
+              <span class="orbit-node orbit-node-two"></span>
+            </div>
+
+          </div>
+
+          <div class="header-divider">
+            <span>01 / ANALYSIS CONSOLE</span>
+            <span>
+              DETECTION ENGINE READY
+              <span class="mini-dot"></span>
+            </span>
+          </div>
+
+          <div class="workspace-grid">
+
+            <!-- PRIMARY WORKSPACE -->
+            <div class="workspace-primary">
+
+              <!-- HASH INPUT PANEL -->
+              <section
+                class="surface input-panel"
+                aria-labelledby="inputTitle"
+              >
+
+                <div class="panel-head">
+
+                  <div class="panel-title-wrap">
+                    <span class="panel-icon">
+                      <svg viewBox="0 0 24 24">
+                        <path d="m8 8-4 4 4 4m8-8 4 4-4 4M14 5l-4 14"/>
+                      </svg>
+                    </span>
+
+                    <div>
+                      <span class="panel-overline">
+                        INPUT / SOURCE
+                      </span>
+                      <h2 id="inputTitle">Hash analyzer</h2>
+                    </div>
+                  </div>
+
+                  <span class="tag-outline">ENGINE 01</span>
+                </div>
+
+                <!-- ANALYSIS MODES -->
+                <div
+                  class="mode-switch"
+                  role="group"
+                  aria-label="Analysis mode"
+                >
+
+                  <button
+                    type="button"
+                    class="mode-btn selected"
+                    data-mode="single"
+                    aria-pressed="true"
+                  >
+                    Single signature
+                  </button>
+
+                  <button
+                    type="button"
+                    class="mode-btn"
+                    data-mode="batch"
+                    aria-pressed="false"
+                  >
+                    Batch analysis
+                    <span class="mode-suffix">/ 100</span>
+                  </button>
+
+                </div>
+
+                <!-- HASH INPUT -->
+                <label
+                  class="field-label"
+                  for="hashInput"
+                  id="inputLabel"
+                >
+                  SIGNATURE INPUT
+                </label>
+
+                <div class="input-container">
+
+                  <div class="input-gutter">
+                    <span>01</span>
+                    <span id="moreGutter" hidden>02</span>
+                  </div>
+
+                  <textarea
+                    id="hashInput"
+                    rows="4"
+                    maxlength="30000"
+                    spellcheck="false"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    placeholder="Paste a hash signature to begin..."
+                    aria-describedby="inputHelp"
+                  ></textarea>
+
+                  <button
+                    type="button"
+                    class="clear-inside"
+                    id="clearInputBtn"
+                    title="Clear input"
+                    aria-label="Clear input"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path d="M18 6 6 18M6 6l12 12"/>
+                    </svg>
+                  </button>
+
+                </div>
+
+                <!-- INPUT INFORMATION -->
+                <div class="input-hints">
+                  <span id="inputHelp">
+                    <span class="mini-dot"></span>
+                    Processed entirely in your browser
+                  </span>
+                  <span id="charCounter">0 characters</span>
+                </div>
+
+                <!-- QUICK EXAMPLES -->
+                <div class="sample-zone">
+                  <span class="micro-label">QUICK LOAD</span>
+                  <div class="samples" id="sampleChips"></div>
+                </div>
+
+                <!-- ACTIONS -->
+                <div class="form-actions">
+
+                  <button
+                    type="button"
+                    class="btn-primary"
+                    id="analyzeBtn"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path d="M4 12h16m-7-7 7 7-7 7"/>
+                    </svg>
+
+                    <span id="analyzeLabel">
+                      Analyze signature
+                    </span>
+
+                    <span class="cta-arrow">↗</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn-secondary"
+                    id="resetBtn"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path d="M3 12a9 9 0 1 0 2-5M3 3v5h5"/>
+                    </svg>
+                    Reset
+                  </button>
+
+                </div>
+
+              </section>
+
+              <!-- RESULTS PANEL -->
+              <section
+                class="surface results-panel"
+                id="resultsPanel"
+                aria-labelledby="resultsTitle"
+              >
+
+                <div class="panel-head results-head">
+
+                  <div class="panel-title-wrap">
+                    <span class="panel-icon mint">
+                      <svg viewBox="0 0 24 24">
+                        <path d="m4 12 5 5L20 6"/>
+                      </svg>
+                    </span>
+
+                    <div>
+                      <span class="panel-overline">
+                        OUTPUT / ANALYSIS
+                      </span>
+                      <h2 id="resultsTitle">
+                        Detection results
+                      </h2>
+                    </div>
+                  </div>
+
+                  <div
+                    class="result-tools"
+                    id="resultTools"
+                    hidden
+                  >
+
+                    <button
+                      type="button"
+                      id="copyResults"
+                      class="tiny-action"
+                      title="Copy results"
+                    >
+                      <svg viewBox="0 0 24 24">
+                        <rect x="8" y="8" width="12" height="12" rx="2"/>
+                        <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>
+                      </svg>
+                      Copy
+                    </button>
+
+                    <button
+                      type="button"
+                      id="downloadResults"
+                      class="tiny-action"
+                      title="Download JSON"
+                    >
+                      <svg viewBox="0 0 24 24">
+                        <path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/>
+                      </svg>
+                      JSON
+                    </button>
+
+                  </div>
+                </div>
+
+                <div
+                  id="resultsOutput"
+                  class="result-output"
+                  aria-live="polite"
+                  aria-atomic="false"
+                >
+
+                  <div class="empty-results">
+
+                    <div class="empty-graphic">
+                      <svg
+                        viewBox="0 0 120 120"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <circle
+                          cx="60"
+                          cy="60"
+                          r="39"
+                          stroke="currentColor"
+                          stroke-dasharray="4 8"
+                        />
+                        <circle
+                          cx="60"
+                          cy="60"
+                          r="25"
+                          stroke="currentColor"
+                          opacity=".38"
+                        />
+                        <path
+                          d="M47 60h26M60 47v26"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        />
+                        <path
+                          d="m89 90 14 14"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                      <span class="empty-cross">+</span>
+                    </div>
+
+                    <strong>Awaiting a signature.</strong>
+
+                    <p>
+                      Enter a hash and run analysis to explore
+                      possible formats, confidence levels,
+                      and supporting signals.
+                    </p>
+
+                    <span class="empty-badge">
+                      NO DATA YET
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </section>
+
+            </div>
+
+            <!-- SECONDARY WORKSPACE -->
+            <div class="workspace-secondary">
+
+              <!-- SIGNAL BREAKDOWN -->
+              <section class="surface signal-panel">
+
+                <div class="panel-head compact">
+                  <div class="panel-title-wrap">
+                    <span class="panel-overline">
+                      LIVE / TELEMETRY
+                    </span>
+                    <h2>Signal breakdown</h2>
+                  </div>
+
+                  <span class="small-pulse"></span>
+                </div>
+
+                <div class="signal-row">
+                  <div class="signal-label">
+                    CHARACTERS
+                    <span>01</span>
+                  </div>
+                  <div class="signal-value" id="statLength">
+                    —
+                  </div>
+                </div>
+
+                <div class="signal-row">
+                  <div class="signal-label">
+                    CHARACTER SET
+                    <span>02</span>
+                  </div>
+                  <div class="signal-value" id="statCharset">
+                    —
+                  </div>
+                </div>
+
+                <div class="signal-row">
+                  <div class="signal-label">
+                    PREFIX MATCH
+                    <span>03</span>
+                  </div>
+                  <div
+                    class="signal-value monospace"
+                    id="statPrefix"
+                  >
+                    —
+                  </div>
+                </div>
+
+                <div class="signal-row last">
+                  <div class="signal-label">
+                    FORMAT SHAPE
+                    <span>04</span>
+                  </div>
+                  <div class="signal-value" id="statShape">
+                    —
+                  </div>
+                </div>
+
+                <div class="signal-bottom">
+                  <span>INPUT SIGNAL</span>
+
+                  <div class="signal-meter">
+                    <span id="signalMeter"></span>
+                  </div>
+
+                  <span id="signalStatus">IDLE</span>
+                </div>
+
+              </section>
+
+              <!-- PRIVACY PANEL -->
+              <section class="info-panel">
+
+                <span class="corner-marker">↗</span>
+
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
+                    <path d="m9 12 2 2 4-4"/>
+                  </svg>
+                </div>
+
+                <span class="info-overline">
+                  PRIVACY FIRST
+                </span>
+
+                <h3>
+                  Your data.<br>
+                  Your device.
+                </h3>
+
+                <p>
+                  No requests, no accounts, no storage.
+                  HASHLENS evaluates signatures locally
+                  and only when you ask it to.
+                </p>
+
+                <span class="info-foot">
+                  END-TO-END LOCAL
+                  <span class="mini-dot"></span>
+                </span>
+
+              </section>
+
+              <!-- EDUCATIONAL NOTE -->
+              <section class="surface takeaway">
+
+                <span class="panel-overline">
+                  GOOD TO KNOW / 01
+                </span>
+
+                <h3>
+                  Identification ≠ verification.
+                </h3>
+
+                <p>
+                  Several algorithms can produce identical-looking
+                  strings. A ranked result is a structural
+                  hypothesis—not cryptographic proof.
+                </p>
+
+                <a href="#guide" class="text-link">
+                  Learn the detection method
+                  <span>↗</span>
+                </a>
+
+              </section>
+
+            </div>
+
+          </div>
+
+          <!-- BOTTOM FOOTER -->
+          <div class="bottom-strip">
+            <span>
+              BUILT FOR CYBERSECURITY RESEARCH, LEARNING & TRIAGE
+            </span>
+            <span>
+              NO CRACKING · NO UPLOAD · NO TRACKING
+            </span>
+          </div>
+
+        </section>
+
+        <!-- SIGNATURE LIBRARY VIEW -->
+        <section
+          class="view hidden"
+          id="view-library"
+          data-view="library"
+          hidden
+        >
+
+          <div class="secondary-intro">
+
+            <div class="eyebrow">
+              <span class="eyebrow-line"></span>
+              RESEARCH REFERENCE
+              <span class="small-seq">— 002</span>
+            </div>
+
+            <h1>
+              Signature <em>library.</em>
+            </h1>
+
+            <p class="intro-copy">
+              A compact field guide to popular hash encodings.
+              Every format is a clue—not absolute evidence.
+            </p>
+
+          </div>
+
+          <!-- SEARCH -->
+          <div class="library-tools">
+
+            <div class="library-search">
+              <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7"/>
+                <path d="m16 16 4 4"/>
+              </svg>
+
+              <input
+                type="search"
+                id="librarySearch"
+                placeholder="Search algorithms, prefixes, categories…"
+                aria-label="Search signature library"
+              >
+            </div>
+
+            <span class="library-count" id="libraryCount">
+              — FORMATS
+            </span>
+
+          </div>
+
+          <!-- FILTERS -->
+          <div
+            class="library-filters"
+            id="libraryFilters"
+            role="group"
+            aria-label="Filter signature library"
+          ></div>
+
+          <!-- LIBRARY CONTENT -->
+          <div
+            class="library-grid"
+            id="libraryGrid"
+          ></div>
+
+          <div class="library-note">
+            These signatures are informational.
+            Format recognition does not reverse,
+            validate, or authenticate hash values.
+          </div>
+
+        </section>
+
+        <!-- HOW IT WORKS VIEW -->
+        <section
+          class="view hidden"
+          id="view-guide"
+          data-view="guide"
+          hidden
+        >
+
+          <div class="secondary-intro">
+
+            <div class="eyebrow">
+              <span class="eyebrow-line"></span>
+              METHOD & DOCUMENTATION
+              <span class="small-seq">— 003</span>
+            </div>
+
+            <h1>
+              How it <em>works.</em>
+            </h1>
+
+            <p class="intro-copy">
+              Three simple signals, one ranked answer.
+              Hash identification looks at how a string
+              is formatted, not what secret it represents.
+            </p>
+
+          </div>
+
+          <!-- GUIDE STEPS -->
+          <div class="guide-steps">
+
+            <article class="guide-card">
+              <span class="step-number">01 /</span>
+              <div class="guide-symbol">$</div>
+
+              <h2>Prefix recognition</h2>
+
+              <p>
+                Self-describing encodings often begin with
+                recognizable markers such as
+                <code>$2b$</code>,
+                <code>$argon2id$</code>,
+                or <code>{SSHA}</code>.
+              </p>
+
+              <span class="guide-rule">
+                STRONG SIGNAL · HIGH CONFIDENCE
+              </span>
+            </article>
+
+            <article class="guide-card">
+              <span class="step-number">02 /</span>
+              <div class="guide-symbol">#</div>
+
+              <h2>Length & shape</h2>
+
+              <p>
+                Hexadecimal length narrows the options.
+                32 hex characters could mean MD5, NTLM,
+                MD4, or RIPEMD-128.
+                Ambiguity is intentional.
+              </p>
+
+              <span class="guide-rule">
+                POSSIBLE MATCH · MEDIUM / LOW
+              </span>
+            </article>
+
+            <article class="guide-card">
+              <span class="step-number">03 /</span>
+              <div class="guide-symbol">Aa</div>
+
+              <h2>Character alphabet</h2>
+
+              <p>
+                Hex, base64-like characters, modular
+                separators, and challenge-response fields
+                help distinguish families and reject mismatches.
+              </p>
+
+              <span class="guide-rule">
+                HEURISTICS · NOT CRYPTOGRAPHIC PROOF
+              </span>
+            </article>
+
+          </div>
+
+          <!-- RESPONSIBLE USE SECTION -->
+          <div class="guide-detail">
+
+            <div>
+              <span class="panel-overline">
+                RESPONSIBLE USE
+              </span>
+
+              <h2>
+                For identification, not cracking.
+              </h2>
+
+              <p>
+                HASHLENS does not attempt to recover passwords,
+                compare against breach datasets, upload secrets,
+                or make network requests. Never paste real tokens
+                or sensitive production credentials, even into
+                local tools, unless you have authorization
+                and understand the risk.
+              </p>
+
+              <p>
+                Includes a local Python CLI for terminal workflows.
+                The browser engine runs independently,
+                with no install step.
+              </p>
+            </div>
+
+            <!-- COMMAND REFERENCE -->
+            <div class="guide-code">
+
+              <span>
+                TERMINAL / QUICK START
+              </span>
+
+              <pre><code>python3 hash_identifier.py \
+  '5f4dcc3b5aa765d61d8327deb882cf99'
+
+python3 -m http.server 8000 \
+  --directory web</code></pre>
+
+              <div>
+                OPEN
+                <strong>localhost:8000</strong>
+                IN YOUR BROWSER
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- ORIGINAL LICENSE ATTRIBUTION -->
+          <footer class="guide-footer">
+            HASHLENS maintainer: Shivam Singh.
+            Inspired by the original Hash Identifier by
+            CarterPerez-dev / AngelaMos.
+            Source and licensing details are provided
+            in the project README and THIRD_PARTY_NOTICES.
+          </footer>
+
+        </section>
+
+      </main>
+
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+  <!-- MAIN JAVASCRIPT -->
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
