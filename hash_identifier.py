@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 """HASHLENS · Local hash signature identification CLI.
 
-Detection strategy adapted from the Hash Identifier work in
-CarterPerez-dev/Cybersecurity-Projects (credited to AngelaMos, 2026),
-AGPL-3.0-or-later. Source and attribution: THIRD_PARTY_NOTICES.md.
-
 A signature match is a heuristic, not cryptographic verification.
 The CLI performs no network access, cracking, or password recovery.
 """
